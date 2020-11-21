@@ -7,8 +7,7 @@ Your {{ config('app.name') }} was account logged in from a new device.
 > **Time:** {{ $time->toCookieString() }}<br>
 > **IP Address:** {{ $ipAddress }}<br>
 > **Browser:** {{ $browser }} ({{ $browserVersion }})<br>
-> **Platform:** {{ $platform }} ({{ $platformVersion }})<br>
-> **Location:** {{ $location }}
+> **Platform:** {{ $platform }} ({{ $platformVersion }})
 
 If this was you, you can ignore this alert. If you suspect any suspicious activity on your account, please change your password.
 
