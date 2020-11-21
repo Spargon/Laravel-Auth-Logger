@@ -62,15 +62,5 @@
         "laravel/slack-notification-channel": "Required to send notifications through Slack"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "funding": [
-        {
-            "type": "github",
-            "url": "https://github.com/sponsors/spargon"
-        },
-        {
-            "type": "other",
-            "url": "https://spargon.tech/donate"
-        }
-    ]
+    "prefer-stable": true
 }
