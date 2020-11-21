@@ -106,7 +106,7 @@ You may clear the old authentication log records using the `auth-logger:clear` A
 Records that are older than the number of days specified in the `older` option in your `config/auth-logger.php` will be deleted when you run the above command:
 
 ```php
-'after' => 31,
+'older' => 31,
 ```
 
 ## Testing
