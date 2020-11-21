@@ -1,7 +1,7 @@
 @component('mail::message')
 # Hello!  
   
-Your {{ config('app.name') }} was account logged in from a new device.  
+Your **{{ config('app.name') }}** account was logged in from a new device.  
   
 > **Account:** {{ $account->email }}<br>
 > **Time:** {{ $time->toCookieString() }}<br>
