@@ -3,7 +3,6 @@
 [![GitHub release](https://img.shields.io/github/release/spargon/laravel-auth-logger.svg?style=for-the-badge&&colorB=7E57C2)](https://packagist.org/packages/spargon/laravel-auth-logger)
 [![GitHub issues](https://img.shields.io/github/issues/Spargon/Laravel-Auth-Logger.svg?style=for-the-badge)](https://github.com/Spargon/Laravel-Auth-Logger/issues)
 [![Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&&colorB=F27E40)](license.md)
-[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Spargon/Laravel-Auth-Logger.svg?style=for-the-badge)]()
 [![Total Downloads](https://img.shields.io/packagist/dt/spargon/laravel-auth-logger.svg?style=for-the-badge)](https://packagist.org/packages/spargon/laravel-auth-logger)
 
 
