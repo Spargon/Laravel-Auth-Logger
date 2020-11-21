@@ -86,6 +86,7 @@ public function notifyAuthLoggerVia()
     return ['mail', 'slack'];
 }
 ```
+If you want to use the `slack` notification channel, you need to install the `laravel/slack-notification-channel` package first.
 
 Of course you can disable notifications by setting the `notify` option in your `config/auth-logger.php` configuration file to `false`:
 
