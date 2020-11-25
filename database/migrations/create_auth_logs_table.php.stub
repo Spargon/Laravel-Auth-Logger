@@ -17,4 +17,14 @@ class CreateAuthLogsTable extends Migration
             $table->timestamp('logout_at')->nullable();
         });
     }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('auth_logs');
+    }
 }
