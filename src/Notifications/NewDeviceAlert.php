@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Lang;
 use Jenssegers\Agent\Agent;
 use Spargon\AuthLogger\AuthLogger;
 
@@ -77,7 +78,7 @@ class NewDeviceAlert extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('[Alert] Login from a new device detected')
+            ->subject(Lang::get('auth-logger::messages.subject'))
             ->markdown('auth-logger::emails.new-device-alert', [
                 'account' => $notifiable,
                 'time' => $this->authLogger->login_at,
@@ -100,7 +101,7 @@ class NewDeviceAlert extends Notification implements ShouldQueue
         return (new SlackMessage)
             ->from(config('app.name'))
             ->warning()
-            ->content('[Alert] Your ' . config('app.name') .' account was logged in from a new device.')
+            ->content(Lang::get('auth-logger::messages.content', ['app' => config('app.name')]))
             ->attachment(function ($attachment) use ($notifiable) {
                 $attachment->fields([
                     'Account' => $notifiable->email,
