@@ -19,6 +19,12 @@ class AuthLoggerServiceProvider extends ServiceProvider
                 __DIR__ . '/../resources/views' => base_path('resources/views/vendor/auth-logger'),
             ], 'views');
 
+            $this->publishes([
+                __DIR__ . '/../resources/lang' => base_path('resources/lang/vendor/auth-logger'),
+            ],
+                'lang'
+            );
+
             $migrationFileName = 'create_auth_logs_table.php';
             if (! $this->migrationFileExists($migrationFileName)) {
                 $this->publishes([
@@ -32,6 +38,8 @@ class AuthLoggerServiceProvider extends ServiceProvider
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'auth-logger');
+
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'auth-logger');
     }
 
     public function register()

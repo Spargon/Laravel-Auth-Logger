@@ -1,15 +1,15 @@
 @component('mail::message')
-# Hello!  
+# @lang('auth-logger::messages.hello')!  
   
-Your **{{ config('app.name') }}** account was logged in from a new device.  
+{{ Lang::get('auth-logger::messages.content', ['app' => config('app.name')]) }}
   
-> **Account:** {{ $account->email }}<br>
-> **Time:** {{ $time->toCookieString() }}<br>
-> **IP Address:** {{ $ipAddress }}<br>
-> **Browser:** {{ $browser }} ({{ $browserVersion }})<br>
-> **Platform:** {{ $platform }} ({{ $platformVersion }})  
+> **@lang('auth-logger::messages.account'):** {{ $account->email }}<br>
+> **@lang('auth-logger::messages.time'):** {{ $time->toCookieString() }}<br>
+> **@lang('auth-logger::messages.ip_address'):** {{ $ipAddress }}<br>
+> **@lang('auth-logger::messages.browser'):** {{ $browser }} ({{ $browserVersion }})<br>
+> **@lang('auth-logger::messages.platform'):** {{ $platform }} ({{ $platformVersion }})  
   
-If this was you, you can ignore this alert. If you suspect any suspicious activity on your account, please change your password.  
+@lang('auth-logger::messages.ignore')  
   
-Regards,<br>{{ config('app.name') }}
+@lang('auth-logger::messages.regards'),<br>{{ config('app.name') }}
 @endcomponent
