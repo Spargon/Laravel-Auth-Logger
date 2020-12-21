@@ -40,7 +40,7 @@ class LogSuccessfulLogin
         $ip = $this->request->ip();
         $userAgent = $this->request->userAgent();
         $known = $user->auths()->whereIpAddress($ip)->whereUserAgent($userAgent)->first();
-        $initial_login = $user->auths()->first(); // returns null if its a first time login
+        $newUser = $user->created_at->diffInMinutes(Carbon::now()) < 1;
 
         $authLogger = new AuthLogger([
             'ip_address' => $ip,
@@ -50,7 +50,7 @@ class LogSuccessfulLogin
 
         $user->auths()->save($authLogger);
 
-        if (! $known && config('auth-logger.notify') && $initial_login != null) {
+        if (! $known && ! $newUser && config('auth-logger.notify')) {
             $user->notify(new NewDeviceAlert($authLogger));
         }
     }
