@@ -40,7 +40,7 @@ class LogSuccessfulLogin
         $ip = $this->request->ip();
         $userAgent = $this->request->userAgent();
         $known = $user->auths()->whereIpAddress($ip)->whereUserAgent($userAgent)->first();
-        $newUser = $user->created_at->diffInMinutes(Carbon::now()) < 1;
+        $newUser = Carbon::parse($user->{$user->getCreatedAtColumn()})->diffInMinutes(Carbon::now()) < 1;
 
         $authLogger = new AuthLogger([
             'ip_address' => $ip,
