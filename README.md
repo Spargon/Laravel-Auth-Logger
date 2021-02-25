@@ -4,7 +4,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/Spargon/Laravel-Auth-Logger.svg?style=for-the-badge)](https://github.com/Spargon/Laravel-Auth-Logger/issues)
 [![Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&&colorB=F27E40)](license.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/spargon/laravel-auth-logger.svg?style=for-the-badge)](https://packagist.org/packages/spargon/laravel-auth-logger)
-
+[![StyleCI](https://github.styleci.io/repos/314730871/shield?branch=main)]
 
 Laravel Auth Logger stores user authentication logs and sends out notifications whenever a user logs in from a new system.
 
