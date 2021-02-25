@@ -39,7 +39,7 @@ class AuthLoggerCommand extends Command
         if (! $logsDeleted) {
             $this->info('Could not find any old authentication logs to delete.');
         } else {
-            $this->info('Authentication logs have been cleared successfully. Total Logs Deleted : ' . $logsDeleted);
+            $this->info('Authentication logs have been cleared successfully. Total Logs Deleted : '.$logsDeleted);
         }
     }
 }
