@@ -4,9 +4,11 @@ namespace Spargon\AuthLogger\Providers;
 
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
+use Illuminate\Auth\Events\OtherDeviceLogout;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Spargon\AuthLogger\Listeners\LogSuccessfulLogin;
 use Spargon\AuthLogger\Listeners\LogSuccessfulLogout;
+use Spargon\AuthLogger\Listeners\LogOtherDevicesLogout;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,10 @@ class EventServiceProvider extends ServiceProvider
         
         Logout::class => [
             LogSuccessfulLogout::class,
+        ],
+
+        OtherDeviceLogout::class => [
+            LogOtherDevicesLogout::class,
         ],
     ];
 
