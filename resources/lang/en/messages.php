@@ -22,5 +22,6 @@ return [
     'ip_address' => 'IP Address',
     'browser' => 'Browser',
     'platform' => 'Platform',
+    'device' => 'Device',
     'ignore' => 'If this was you, you can ignore this alert. If you suspect any suspicious activity on your account, please change your password.'
 ];

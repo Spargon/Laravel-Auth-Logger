@@ -42,6 +42,24 @@ class NewDeviceAlert extends Notification implements ShouldQueue
     public $platform;
 
     /**
+     * User's device type retrived from the user agent.
+     * 
+     */
+    public $deviceType;
+
+    /**
+     * User's device name (only for mobile devices).
+     * 
+     */
+    public $deviceName = '';
+
+    /**
+     * Whether device blocking is enabled.
+     * 
+     */
+    public $isDeviceBlockingEnabled = true;
+
+    /**
      * Create a new notification instance.
      *
      * @param  \Spargon\AuthLogger\AuthLogger  $authLogger
@@ -56,6 +74,18 @@ class NewDeviceAlert extends Notification implements ShouldQueue
         $this->agent->setUserAgent($authLogger->user_agent);
         $this->browser = $this->agent->browser();
         $this->platform = $this->agent->platform();
+
+        // Check device type and fetch device name for mobile.
+        if ($this->agent->isMobile()) {
+            $this->deviceType = 'mobile';
+            $this->deviceName = $this->agent->device();
+        }
+        elseif ($this->agent->isTablet()) {
+            $this->deviceType = 'tablet';
+        }
+        elseif ($this->agent->isDesktop()) {
+            $this->deviceType = 'desktop';
+        }
     }
 
     /**
@@ -87,6 +117,9 @@ class NewDeviceAlert extends Notification implements ShouldQueue
                 'browserVersion' => $this->agent->version($this->browser),
                 'platform' => $this->platform,
                 'platformVersion' => $this->agent->version($this->platform),
+                'deviceType' => $this->deviceType,
+                'deviceName' => $this->deviceName,
+                'isDeviceBlockingEnabled' => $this->isDeviceBlockingEnabled
             ]);
     }
 
