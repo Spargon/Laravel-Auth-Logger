@@ -39,4 +39,29 @@ return [
     */
 
     'older' => env('AUTH_LOGGER_OLDER_THAN', 31),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Customizing Slack Messages
+    |--------------------------------------------------------------------------
+    |
+    | Follow the instructions here for the slack pre-requisites - 
+    | https://laravel.com/docs/8.x/notifications#slack-prerequisites
+    |
+    | Generate your slack incoming webhook from here - 
+    | https://slack.com/services/new/incoming-webhook
+    |
+    | You can customize the Notification Sender name, Channel to receive 
+    | notification on and the image icon to show.
+    |
+    | Custom channel option below will only work if the webhook doesnt have 
+    | a fixed channel assigned to it.
+    |
+    */
+
+    'slack' => [
+        'from' => env('APP_NAME', 'Auth Logger'),
+        'channel' => '#general', // when changing the channel name, be sure to prefix it with #
+        'image' => 'https://laravel.com/img/favicon/favicon-32x32.png', // Replace this with the link to your .png icon
+    ],
 ];

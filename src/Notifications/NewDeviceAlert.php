@@ -119,7 +119,9 @@ class NewDeviceAlert extends Notification implements ShouldQueue
     public function toSlack($notifiable)
     {
         return (new SlackMessage)
-            ->from(config('app.name'))
+            ->from(config('auth-logger.slack.from'))
+            ->to(config('auth-logger.slack.channel'))
+            ->image(config('auth-logger.slack.image'))
             ->warning()
             ->content(Lang::get('auth-logger::messages.content', ['app' => config('app.name')]))
             ->attachment(function ($attachment) use ($notifiable) {
@@ -129,6 +131,7 @@ class NewDeviceAlert extends Notification implements ShouldQueue
                     'IP Address' => $this->authLogger->ip_address,
                     'Browser' => $this->browser.' ('.$this->agent->version($this->browser).')',
                     'Platform' => $this->platform.' ('.$this->agent->version($this->platform).')',
+                    'URL' => config('app.url'),
                 ]);
             });
     }
