@@ -54,12 +54,6 @@ class NewDeviceAlert extends Notification implements ShouldQueue
     public $deviceName = '';
 
     /**
-     * Whether device blocking is enabled.
-     * 
-     */
-    public $isDeviceBlockingEnabled = true;
-
-    /**
      * Create a new notification instance.
      *
      * @param  \Spargon\AuthLogger\AuthLogger  $authLogger
@@ -118,8 +112,7 @@ class NewDeviceAlert extends Notification implements ShouldQueue
                 'platform' => $this->platform,
                 'platformVersion' => $this->agent->version($this->platform),
                 'deviceType' => $this->deviceType,
-                'deviceName' => $this->deviceName,
-                'isDeviceBlockingEnabled' => $this->isDeviceBlockingEnabled
+                'deviceName' => $this->deviceName
             ]);
     }
 
