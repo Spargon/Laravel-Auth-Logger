@@ -18,14 +18,21 @@ You can install the package via composer:
 composer require spargon/laravel-auth-logger
 ```
 
-After installing the Laravel-Auth-Logger, you can publish its config, migration & views using the `vendor:publish` command in your console:
+After installing the Laravel-Auth-Logger package, you need to publish the `auth-logger` config file using the artisan command below in your console:
 
 ```bash
-php artisan vendor:publish --provider="Spargon\AuthLogger\AuthLoggerServiceProvider"
+php artisan vendor:publish  --tag=auth-logger-config
 ```
 
-In order to store the authentication logs, you need to migrate your database. Running the command below will automatically
-create the required **`auth_logs`** table for your app to use.
+Next, you need to publish the migration file using the `vendor:publish` command in your console:
+
+```bash
+php artisan vendor:publish  --tag=auth-logger-migrations
+```
+
+If you want to change the name of the auth-logger table, you can do so by changing the vaule of `table_name` in the `config/auth-logger.php` file (this step is optional).
+
+After that you need to migrate the recently published file to your database using the artisan command below (this will create a new table in your database for your app to use).
 
 ```bash
 php artisan migrate
@@ -70,7 +77,7 @@ User::find(1)->previousLoginIp(); [or] auth()->user()->lapreviousLoginIpstLoginA
 
 ### Send New Device Alert Notification
 
-Notifications may be sent on the `mail`, and the `slack` channels. By default AuthLogger will send a notification via the mail driver (provided you have enabled `notify` in `config/auth-logger.php` file).
+Notifications may be sent on the `mail`, or/and the `slack` channels. By default AuthLogger will send a notification via the mail driver (provided you have enabled `notify` in `config/auth-logger.php` file).
 
 You can define `notifyAuthLoggerVia` method on the User's Model to determine which channels the notification should be sent to:
 
@@ -85,7 +92,7 @@ public function notifyAuthLoggerVia()
     return ['mail', 'slack'];
 }
 ```
-If you want to use the `slack` notification channel, you need to install the `laravel/slack-notification-channel` package first.
+**Note:** If you want to use the `slack` notification channel, you need to install the `laravel/slack-notification-channel` package first otherwise the package will throw a `Driver not supported` error.
 
 Of course you can disable notifications by setting the `notify` option in your `config/auth-logger.php` configuration file to `false`:
 
@@ -108,6 +115,21 @@ Records that are older than the number of days specified in the `older` option i
 ```php
 'older' => 31,
 ```
+
+## Optional Files
+
+You can publish the New Device Alert Email view using the command below:
+
+```bash
+php artisan vendor:publish  --tag=auth-logger-views
+```
+
+You can also publish the translations file used by the auth-logger using the command below:
+
+```bash
+php artisan vendor:publish  --tag=auth-logger-translations
+```
+*These are optional files. You don't need to publish them for the package to work. They exist only for cases where you want to make any changes to the files yourself.*
 
 ## Testing
 

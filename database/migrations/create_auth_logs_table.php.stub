@@ -8,7 +8,7 @@ class CreateAuthLogsTable extends Migration
 {
     public function up()
     {
-        Schema::create('auth_logs', function (Blueprint $table) {
+        Schema::create(config('auth-logger.table_name'), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->morphs('authenticatable');
             $table->string('ip_address', 45)->nullable();
@@ -25,6 +25,6 @@ class CreateAuthLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auth_logs');
+        Schema::dropIfExists(config('auth-logger.table_name'));
     }
 }
