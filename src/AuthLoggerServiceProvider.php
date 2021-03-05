@@ -4,8 +4,8 @@ namespace Spargon\AuthLogger;
 
 use Spargon\AuthLogger\Commands\AuthLoggerCommand;
 use Spargon\AuthLogger\Providers\EventServiceProvider;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class AuthLoggerServiceProvider extends PackageServiceProvider
 {
