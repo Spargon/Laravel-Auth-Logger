@@ -92,8 +92,36 @@ public function notifyAuthLoggerVia()
     return ['mail', 'slack'];
 }
 ```
-**Note:** If you want to use the `slack` notification channel, you need to install the `laravel/slack-notification-channel` package first otherwise the package will throw a `Driver not supported` error.
 
+### Slack Notifications & Customiziations
+
+**Note:** If you want to use the `slack` notification channel, you need to install the `laravel/slack-notification-channel` package first otherwise your app will throw a `Driver not supported` error. Be sure to go through the Laravel docs for Slack Pre-requisites [here.](https://laravel.com/docs/8.x/notifications#slack-prerequisites)
+
+You also need to generate a Slack Incoming Webhook from [here](https://slack.com/services/new/incoming-webhook) and then add the generated webhook to your authenticatable model (usually the User) as such:
+
+```php
+/**
+ * Route notifications for the Slack channel.
+ *
+ * @param  \Illuminate\Notifications\Notification  $notification
+ * @return string
+ */
+public function routeNotificationForSlack($notification)
+{
+    return 'https://hooks.slack.com/services/T01D8HUCU4.....'; // replace this with the webhook you receive from Slack
+}
+```
+
+##### Customizing Messages
+
+In `config/auth-logger.php` file, you can customize the name of the `Sender`, the `Channel` to receive the notifications on & the `Icon` to show on the notification.
+
+By default all slack messages will be sent to the `#general` channel.
+
+
+
+
+### Disabling Notifications
 Of course you can disable notifications by setting the `notify` option in your `config/auth-logger.php` configuration file to `false`:
 
 ```php
