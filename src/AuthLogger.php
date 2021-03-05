@@ -38,6 +38,16 @@ class AuthLogger extends Model
     ];
 
     /**
+     * Get the table associated with the auth logger model.
+     *
+     * @return string
+     */
+    public function getTable()
+    {
+        return config('auth-logger.table_name', parent::getTable());
+    }
+
+    /**
      * Get the authenticatable entity that the authentication log belongs to.
      */
     public function authenticatable()
