@@ -117,9 +117,9 @@ public function routeNotificationForSlack($notification)
 In `config/auth-logger.php` file, you can customize the name of the `Sender`, the `Channel` to receive the notifications on & the `Icon` to show on the notification.
 
 By default all slack messages will be sent to the `#general` channel.
-
-
-
+Slack Sample Image | Mail Sample Image
+:-------------------------:|:-------------------------:
+![](slack-sample.png)  |  ![](mail-sample.png)
 
 ### Disabling Notifications
 Of course you can disable notifications by setting the `notify` option in your `config/auth-logger.php` configuration file to `false`:
