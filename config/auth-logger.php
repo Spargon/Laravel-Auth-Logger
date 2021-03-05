@@ -45,16 +45,16 @@ return [
     | Customizing Slack Messages
     |--------------------------------------------------------------------------
     |
-    | Follow the instructions here for the slack pre-requisites - 
+    | Follow the instructions here for the slack pre-requisites -
     | https://laravel.com/docs/8.x/notifications#slack-prerequisites
     |
-    | Generate your slack incoming webhook from here - 
+    | Generate your slack incoming webhook from here -
     | https://slack.com/services/new/incoming-webhook
     |
-    | You can customize the Notification Sender name, Channel to receive 
+    | You can customize the Notification Sender name, Channel to receive
     | notification on and the image icon to show.
     |
-    | Custom channel option below will only work if the webhook doesnt have 
+    | Custom channel option below will only work if the webhook doesnt have
     | a fixed channel assigned to it.
     |
     */
