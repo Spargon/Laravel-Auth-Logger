@@ -31,13 +31,11 @@ class NewDeviceAlert extends Notification implements ShouldQueue
 
     /**
      * User's browser retrived from the user agent.
-     *
      */
     public $browser;
 
     /**
      * User's platform retrived from the user agent.
-     *
      */
     public $platform;
 
@@ -62,7 +60,7 @@ class NewDeviceAlert extends Notification implements ShouldQueue
     public function __construct(AuthLogger $authLogger)
     {
         $this->authLogger = $authLogger;
-        
+
         // Parsing the user agent
         $this->agent = new Agent();
         $this->agent->setUserAgent($authLogger->user_agent);
@@ -133,8 +131,8 @@ class NewDeviceAlert extends Notification implements ShouldQueue
                     'Account' => $notifiable->email,
                     'Time' => $this->authLogger->login_at->toCookieString(),
                     'IP Address' => $this->authLogger->ip_address,
-                    'Browser' => $this->browser . ' (' . $this->agent->version($this->browser) . ')' ,
-                    'Platform' => $this->platform . ' (' . $this->agent->version($this->platform) . ')',
+                    'Browser' => $this->browser.' ('.$this->agent->version($this->browser).')',
+                    'Platform' => $this->platform.' ('.$this->agent->version($this->platform).')',
                 ]);
             });
     }
