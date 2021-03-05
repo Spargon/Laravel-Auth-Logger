@@ -43,13 +43,11 @@ class NewDeviceAlert extends Notification implements ShouldQueue
 
     /**
      * User's device type retrived from the user agent.
-     * 
      */
     public $deviceType;
 
     /**
      * User's device name (only for mobile devices).
-     * 
      */
     public $deviceName = '';
 
@@ -73,11 +71,9 @@ class NewDeviceAlert extends Notification implements ShouldQueue
         if ($this->agent->isMobile()) {
             $this->deviceType = 'mobile';
             $this->deviceName = $this->agent->device();
-        }
-        elseif ($this->agent->isTablet()) {
+        } elseif ($this->agent->isTablet()) {
             $this->deviceType = 'tablet';
-        }
-        elseif ($this->agent->isDesktop()) {
+        } elseif ($this->agent->isDesktop()) {
             $this->deviceType = 'desktop';
         }
     }
@@ -112,7 +108,7 @@ class NewDeviceAlert extends Notification implements ShouldQueue
                 'platform' => $this->platform,
                 'platformVersion' => $this->agent->version($this->platform),
                 'deviceType' => $this->deviceType,
-                'deviceName' => $this->deviceName
+                'deviceName' => $this->deviceName,
             ]);
     }
 
