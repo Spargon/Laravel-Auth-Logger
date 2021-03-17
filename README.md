@@ -159,6 +159,25 @@ php artisan vendor:publish  --tag=auth-logger-translations
 ```
 *These are optional files. You don't need to publish them for the package to work. They exist only for cases where you want to make any changes to the files yourself.*
 
+## Location Tagging (GeoIP) - Experimental
+
+*This is an experimental release of location tagging. Accuracy is not 100% guaranteed. Use it at your own risk.*
+
+Location tagging is disabled by default. In order to use location tagging in your auth logger messages and mails, first publish the `geoip` config file using the artisan command below: 
+
+```bash
+php artisan vendor:publish  --tag=auth-logger-geoip-config
+```
+
+Next, open the **config/auth-logger.php** file and set **location_tagging** to **true**, alternatively you can set **AUTH_LOGGER_LOCATION_TAGGING=true** in your .env file.
+
+```bash
+'location_tagging' => env('AUTH_LOGGER_LOCATION_TAGGING', true),
+```
+Once enabled, the NewDeviceAlert notifier will pass the location (fetched using the IP Address) to the mail markdown.
+
+If you have any suggestions or improvements that could be made to this, be sure to open a PR for it.
+
 ## Testing
 
 ``` bash

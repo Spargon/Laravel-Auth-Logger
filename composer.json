@@ -26,7 +26,9 @@
         "illuminate/http": "^7.0|^8.0",
         "illuminate/notifications": "^7.0|^8.0",
         "illuminate/support": "^7.0|^8.0",
-        "spatie/laravel-package-tools": "^1.4"
+        "spatie/laravel-package-tools": "^1.4",
+        "torann/geoip": "^3.0"
+
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",

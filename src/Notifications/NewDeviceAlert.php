@@ -50,6 +50,11 @@ class NewDeviceAlert extends Notification implements ShouldQueue
     public $deviceName = '';
 
     /**
+     * User's Location (if enabled in config).
+     */
+    public $location;
+
+    /**
      * Create a new notification instance.
      *
      * @param  \Spargon\AuthLogger\AuthLogger  $authLogger
@@ -73,6 +78,10 @@ class NewDeviceAlert extends Notification implements ShouldQueue
             $this->deviceType = 'tablet';
         } elseif ($this->agent->isDesktop()) {
             $this->deviceType = 'desktop';
+        }
+
+        if(config('auth-logger.location_tagging')) {
+            $this->location = geoip($this->authLogger->ip_address);
         }
     }
 
@@ -107,6 +116,7 @@ class NewDeviceAlert extends Notification implements ShouldQueue
                 'platformVersion' => $this->agent->version($this->platform),
                 'deviceType' => $this->deviceType,
                 'deviceName' => $this->deviceName,
+                'location' => $this->location
             ]);
     }
 
@@ -125,14 +135,16 @@ class NewDeviceAlert extends Notification implements ShouldQueue
             ->warning()
             ->content(Lang::get('auth-logger::messages.content', ['app' => config('app.name')]))
             ->attachment(function ($attachment) use ($notifiable) {
-                $attachment->fields([
-                    'Account' => $notifiable->email,
-                    'Time' => $this->authLogger->login_at->toCookieString(),
-                    'IP Address' => $this->authLogger->ip_address,
-                    'Browser' => $this->browser.' ('.$this->agent->version($this->browser).')',
-                    'Platform' => $this->platform.' ('.$this->agent->version($this->platform).')',
-                    'URL' => config('app.url'),
-                ]);
+                $attachment
+                    ->fields([
+                        'Account' => $notifiable->email,
+                        'Time' => $this->authLogger->login_at->toCookieString(),
+                        'IP Address' => $this->authLogger->ip_address,
+                        'Browser' => $this->browser.' ('.$this->agent->version($this->browser).')',
+                        'Platform' => $this->platform.' ('.$this->agent->version($this->platform).')',
+                        'URL' => config('app.url'),
+                        'Location' => $this->location ? $this->location->city .' ('.$this->location->state .'), ' . $this->location->country : 'Disabled',
+                    ]);
             });
     }
 }

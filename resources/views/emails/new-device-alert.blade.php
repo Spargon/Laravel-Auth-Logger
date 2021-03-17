@@ -23,6 +23,9 @@
             @if($deviceName)
             <b>@lang('auth-logger::messages.device'):</b> {{ $deviceName }}
             @endif
+            @if($location)
+            <b>@lang('auth-logger::messages.location'):</b> {{ $location->city }} ({{ $location->state }}), {{ $location->country }}.
+            @endif
         </td>
     </tr>
 </table>  

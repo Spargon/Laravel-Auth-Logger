@@ -42,6 +42,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Enable Location Tagging
+    |--------------------------------------------------------------------------
+    |
+    | Disabled by default. When enabled, this will make use of the GeoIP package 
+    | from Torann to fetch the users location using their IP address. Besure to 
+    | read and follow the instructions in the readme before enabling this feature.
+    |
+    */
+    'location_tagging' => env('AUTH_LOGGER_LOCATION_TAGGING', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Customizing Slack Messages
     |--------------------------------------------------------------------------
     |

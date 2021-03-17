@@ -23,5 +23,9 @@ class AuthLoggerServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         $this->app->register(EventServiceProvider::class);
+
+        $this->publishes([
+            __DIR__ . '/../config/geoip.php' => config_path('geoip.php'),
+        ], 'auth-logger-geoip-config');
     }
 }
