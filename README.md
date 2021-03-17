@@ -159,6 +159,12 @@ php artisan vendor:publish  --tag=auth-logger-translations
 ```
 *These are optional files. You don't need to publish them for the package to work. They exist only for cases where you want to make any changes to the files yourself.*
 
+## Experimental (dev-geoip)
+
+Currently we are experimenting with an implention of Location Tagging (using GeoIP package from Torann). You can checkout the `geoip` branch to play around with it or get the dev-geoip release from packagist using `composer require spargon/laravel-auth-logger:dev-geoip`
+
+*This is an experimental release of location tagging. Accuracy is not 100% guaranteed. Use it at your own risk.*
+
 ## Testing
 
 ``` bash
