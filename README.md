@@ -18,12 +18,12 @@ You can install the package via composer:
 composer require spargon/laravel-auth-logger
 ```
 
-After installing the Laravel-Auth-Logger package, you need run the install command which will take take of everything you need to get started. Type the following artisan command in your console:
+After installing the **Laravel-Auth-Logger** package, you need run the install command which will take care of everything you need to get started. Type the following artisan command in your console:
 
 ```bash
 php artisan auth-logger:install
 ```
-This will publish the `auth-logger.php` config file, publish the migration files and ask you for permission to run said migrations.
+This will publish the `config/auth-logger.php` file, publish the necessary migration files and ask you for permission to run said migrations.
 
 ![Install Command Sample](install-command.jpg)
 
