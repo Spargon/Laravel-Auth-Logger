@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-auth-logger` will be documented in this file
 
+## 1.7.0 - 2025-03-01
+
+- Adds Support for Laravel 12.
+
 ## 1.6.0 - 2024-06-05
 
 - Adds Support for Laravel 11.
